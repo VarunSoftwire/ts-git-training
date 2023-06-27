@@ -1,11 +1,13 @@
-export const computeFibonacciNumber = (position: number): number => {
-    if (position <= 2) {
+export const computeFibonacciNumber = (position: number, isRecursive?: boolean): number => {
+    if (isRecursive ?? false) return recursiveFibonacci(position);
+    if (position < 0) return computeNegativeFibonacci(position);
+    else if (position <= 2) {
         return 1;
     }
-
+    
     let smallFibonacciNumber = 1;
     let largeFibonacciNumber = 1;
-
+    
     let currentPosition = 2;
     while (currentPosition < position) {
         const nextFibonacciNumber = smallFibonacciNumber ;
